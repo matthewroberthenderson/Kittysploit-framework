@@ -5,21 +5,22 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
-    
+
 jobs:
-  execute-script:
+  test:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
-     
-      - name: Run install
-        run: |
-          chmod +x ./install/install.sh
+      - name: Install dependencies
+        run: chmod +x ./install/install.sh
           ./install/install.sh
 
-      - name: Run app
-        run: |
-          python kittyconsole.py
+      - name: Run tests
+          run: python kittyconsole.py
+        env:
+          CI: true
+     
