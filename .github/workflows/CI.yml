@@ -21,6 +21,3 @@ jobs:
 
       - name: Run tests
           run: python kittyconsole.py
-        env:
-          CI: true
-     
